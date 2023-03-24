@@ -11,7 +11,7 @@ const ProfileForm = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     const passwordEnter = enteredPassword.current.value;
-
+    //for changing password we are using rest Api
     fetch(
       "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyAPGGNCu_2he-n11MxRCBHY0WxVfe0aRi4",
       {

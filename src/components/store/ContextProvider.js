@@ -2,16 +2,23 @@ import { useState } from "react";
 import { AuthContext } from "./AuthContext";
 
 const AuthContextProvider = (props) => {
-  const [token, setToken] = useState(null);
+  //if we found token in local storage and we use that token for authentication by taking as initial value, instead of providing null we should provide initial value
+  const initialToken = localStorage.getItem("token");
+  const [token, setToken] = useState(initialToken);
 
+  //!! for bolean values like true or false
   const userIsLoggedIn = !!token;
 
   const LoginHandler = () => {
     setToken(token);
+    //saving the token in local storage
+    localStorage.setItem("token", token);
   };
 
   const logoutHandler = () => {
     setToken(null);
+    //removing token from the local storage
+    localStorage.removeItem("token");
   };
 
   const contextValue = {

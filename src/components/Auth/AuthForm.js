@@ -27,9 +27,11 @@ const AuthForm = () => {
     setIsLoading(true);
     let url;
     if (isLogin) {
+      //rest api url for sign in from firebase
       url =
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAPGGNCu_2he-n11MxRCBHY0WxVfe0aRi4";
     } else {
+      //rest api for sign up from firebase
       url =
         "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAPGGNCu_2he-n11MxRCBHY0WxVfe0aRi4";
     }
@@ -60,7 +62,9 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
+        //storing in Authcontext when user is loogen in
         ctx.LoginHandler(data.idToken);
+       
         history.replaceState("/");
       })
       .catch((err) => {
@@ -74,11 +78,11 @@ const AuthForm = () => {
       <form onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor="email">Your Email</label>
-          <input type="email" id="email" ref={emailInputRef} required />
+          <input type="email" ref={emailInputRef} required />
         </div>
         <div className={classes.control}>
           <label htmlFor="password">Your Password</label>
-          <input type="password" id="password" ref={passwordRef} required />
+          <input type="password" ref={passwordRef} required />
         </div>
         <div className={classes.actions}>
           {!isLoading && (
