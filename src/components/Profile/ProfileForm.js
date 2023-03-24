@@ -27,7 +27,12 @@ const ProfileForm = () => {
       }
     ).then((response) => {
       //Assuming-->success
-      history.replace("/");
+      if (response.ok) {
+        history.replace("/");
+        console.log("success");
+      } else {
+        console.log("failed");
+      }
     });
   };
 

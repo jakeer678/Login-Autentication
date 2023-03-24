@@ -64,7 +64,7 @@ const AuthForm = () => {
       .then((data) => {
         //storing in Authcontext when user is loogen in
         ctx.LoginHandler(data.idToken);
-       
+
         history.replaceState("/");
       })
       .catch((err) => {
